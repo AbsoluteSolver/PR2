@@ -131,6 +131,10 @@ namespace PR2
                     e.Row.Cells[columnName].Value = lookup.First().Key;
                 }
             }
+            if (currentTable == "выдачи" && dataTable.Columns.Contains("дата_выдачи"))
+            {
+                e.Row.Cells["дата_выдачи"].Value = DateTime.Today;
+            }
         }
     }
 }
