@@ -1,5 +1,6 @@
 ﻿using Npgsql;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace PR2
 {
@@ -48,9 +49,16 @@ namespace PR2
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            NpgsqlCommandBuilder npgsqlCommandBuilder = new NpgsqlCommandBuilder(adapter);
-            adapter.Update(dataTable);
-            MessageBox.Show("Изменения сохранены.");
+            try
+            {
+                NpgsqlCommandBuilder npgsqlCommandBuilder = new NpgsqlCommandBuilder(adapter);
+                adapter.Update(dataTable);
+                MessageBox.Show("Изменения сохранены.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Во время сохранения что-то пошло не так:\n" + ex.Message);
+            }
 
         }
 
@@ -135,6 +143,17 @@ namespace PR2
             {
                 e.Row.Cells["дата_выдачи"].Value = DateTime.Today;
             }
+        }
+
+        private void debtorsBtn_Click(object sender, EventArgs e)
+        {
+            Form form = new DebtorsForm();
+            form.ShowDialog();
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Во время сохранения что-то пошло не так:\n" + e.Context);
         }
     }
 }

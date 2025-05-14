@@ -24,6 +24,7 @@ namespace PR2
             label1 = new Label();
             saveBtn = new Button();
             pictureBoxLogo = new PictureBox();
+            debtorsBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
@@ -57,6 +58,7 @@ namespace PR2
             dataGridView1.RowTemplate.Height = 24;
             dataGridView1.Size = new Size(1186, 543);
             dataGridView1.TabIndex = 0;
+            dataGridView1.DataError += dataGridView1_DataError;
             // 
             // comboBox1
             // 
@@ -103,12 +105,26 @@ namespace PR2
             pictureBoxLogo.TabIndex = 5;
             pictureBoxLogo.TabStop = false;
             // 
+            // debtorsBtn
+            // 
+            debtorsBtn.BackColor = Color.FromArgb(100, 43, 1);
+            debtorsBtn.Font = new Font("Segoe UI", 10.2F);
+            debtorsBtn.ForeColor = Color.White;
+            debtorsBtn.Location = new Point(1206, 511);
+            debtorsBtn.Name = "debtorsBtn";
+            debtorsBtn.Size = new Size(159, 44);
+            debtorsBtn.TabIndex = 7;
+            debtorsBtn.Text = "Задолжники";
+            debtorsBtn.UseVisualStyleBackColor = false;
+            debtorsBtn.Click += debtorsBtn_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1377, 567);
+            Controls.Add(debtorsBtn);
             Controls.Add(pictureBoxLogo);
             Controls.Add(saveBtn);
             Controls.Add(label1);
@@ -131,6 +147,7 @@ namespace PR2
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private PictureBox pictureBoxLogo;
+        private Button debtorsBtn;
     }
 }
